@@ -37,6 +37,9 @@ dependencies:
   get: ^4.6.1
   flutter_svg: ^1.0.3
   hexcolor: ^2.0.6
+  http: ^0.13.5
+  shared_preferences: ^2.0.15
+  fluttertoast: ^8.0.7
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +67,7 @@ flutter:
   assets:
     - assets/img/image.svg
     - assets/img/image2.svg
+    - assets/img/Lay.png
    
  
 
@@ -78,11 +82,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  fonts:
+    - family: yugothib
+      fonts:
+        - asset: assets/font/yugothib.ttf
+        
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
