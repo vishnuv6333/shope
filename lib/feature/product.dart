@@ -88,7 +88,6 @@ class ProductPage extends StatelessWidget {
                   padding:
                       const EdgeInsets.only(left: 32, right: 52, bottom: 11),
                   child: ListTile(
-                    tileColor: Colors.amber,
                     leading: Image.asset("assets/img/Lay.png"),
                     title: const Text("Paripu vada"),
                     subtitle: const Text("33"),
