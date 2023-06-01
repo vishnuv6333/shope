@@ -3,15 +3,15 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import '../const/baseurl.dart';
 import '../model/login.dart';
 
 class LoginController extends GetxController {
   var email = ''.obs;
   var password = ''.obs;
+  final userData = GetStorage();
   RxBool passwordvisible = true.obs;
   ServerAdrs myObject = ServerAdrs();
   Future<void> login() async {
@@ -29,9 +29,9 @@ class LoginController extends GetxController {
           await post(uri, headers: headers, body: jsonBody, encoding: encoding);
       if (response.statusCode == 200) {
         var res = loginFromJson(response.body);
-        final prefs = await SharedPreferences.getInstance();
-        prefs.setString("user_token", res.token.toString());
-        Get.toNamed('/product');
+
+        userData.write("user_token", res.token.toString());
+        Get.offAllNamed('/product');
       } else {
         tosterMessage("Invalid number or user name");
       }

@@ -1,3 +1,8 @@
+// To parse this JSON data, do
+//
+//     final product = productFromJson(jsonString?);
+
+import 'package:meta/meta.dart';
 import 'dart:convert';
 
 Product productFromJson(String str) => Product.fromJson(json.decode(str));
@@ -5,9 +10,9 @@ Product productFromJson(String str) => Product.fromJson(json.decode(str));
 String productToJson(Product data) => json.encode(data.toJson());
 
 class Product {
-  final int status;
-  final String message;
-  final Products products;
+  int? status;
+  String? message;
+  Products products;
 
   Product({
     required this.status,
@@ -29,19 +34,19 @@ class Product {
 }
 
 class Products {
-  final int currentPage;
-  final List<Datum> data;
-  final String firstPageUrl;
-  final int from;
-  final int lastPage;
-  final String lastPageUrl;
-  final List<Link> links;
-  final String nextPageUrl;
-  final String path;
-  final int perPage;
-  final dynamic prevPageUrl;
-  final int to;
-  final int total;
+  int? currentPage;
+  List<Datum> data;
+  String? firstPageUrl;
+  int? from;
+  int? lastPage;
+  String? lastPageUrl;
+  List<Link> links;
+  String? nextPageUrl;
+  String? path;
+  int? perPage;
+  dynamic prevPageUrl;
+  int? to;
+  int? total;
 
   Products({
     required this.currentPage,
@@ -93,71 +98,71 @@ class Products {
 }
 
 class Datum {
-  final int id;
-  final int storeId;
-  final dynamic subStoreId;
-  final String storeItemId;
-  final String name;
-  final dynamic nameLanguage;
-  final dynamic kitchenLabel;
-  final int categoryId;
-  final int subcategoryId;
-  final dynamic brandId;
-  final dynamic productCode;
-  final String coverImage;
-  final String videoUrl;
-  final dynamic tags;
-  final dynamic shortDescription;
-  final dynamic shortDescriptionLanguage;
-  final String description;
-  final dynamic descriptionLanguage;
-  final double price;
-  final int wp1;
-  final double wp2;
-  final double offerPrice;
-  final String offerLabel;
-  final dynamic offerLabelLanguage;
-  final dynamic priceNote;
-  final int unitId;
-  final int maxQty;
-  final int available;
-  final int popular;
-  final bool looseAvailable;
-  final dynamic barcode;
-  final int sequence;
-  final int deliveryCharge;
-  final Type deliveryChargeType;
-  final int inventoryStock;
-  final int tax;
-  final int hidePrice;
-  final int considerPrice;
-  final int isService;
-  final Settings settings;
-  final List<dynamic> filterProperties;
-  final int isCombo;
-  final int hasComplementary;
-  final int maxComplementaryQty;
-  final List<dynamic> variant;
-  final List<dynamic> availableVariants;
-  final String cardStyle;
-  final int active;
-  final DateTime createdAt;
-  final DateTime updatedAt;
-  final dynamic deletedAt;
-  final dynamic sectionId;
-  final dynamic productRatingsAvgRating;
-  final dynamic brand;
-  final List<Addon> addons;
-  final List<ProductOption> productOptions;
-  final List<ProductImage> productImages;
-  final List<dynamic> unitQuantities;
-  final List<Category> categories;
-  final Unit unit;
-  final List<dynamic> complementaryProducts;
-  final double taxCalc;
-  final double totalPrice;
-  final double priceTaxed;
-  final List<int> cates;
+  int? id;
+  int? storeId;
+  dynamic subStoreId;
+  String? storeItemId;
+  String? name;
+  dynamic nameLanguage;
+  dynamic kitchenLabel;
+  int? categoryId;
+  int? subcategoryId;
+  dynamic brandId;
+  dynamic productCode;
+  String? coverImage;
+  String? videoUrl;
+  dynamic tags;
+  dynamic shortDescription;
+  dynamic shortDescriptionLanguage;
+  String? description;
+  dynamic descriptionLanguage;
+  double? price;
+  int? wp1;
+  double? wp2;
+  double? offerPrice;
+  String? offerLabel;
+  dynamic offerLabelLanguage;
+  dynamic priceNote;
+  int? unitId;
+  int? maxQty;
+  int? available;
+  int? popular;
+  bool looseAvailable;
+  dynamic barcode;
+  int? sequence;
+  int? deliveryCharge;
+  Type? deliveryChargeType;
+  int? inventoryStock;
+  int? tax;
+  int? hidePrice;
+  int? considerPrice;
+  int? isService;
+  Settings settings;
+  List<dynamic>? filterProperties;
+  int? isCombo;
+  int? hasComplementary;
+  int? maxComplementaryQty;
+  List<dynamic> variant;
+  List<dynamic> availableVariants;
+  String? cardStyle;
+  int? active;
+  DateTime createdAt;
+  DateTime updatedAt;
+  dynamic deletedAt;
+  dynamic sectionId;
+  dynamic productRatingsAvgRating;
+  dynamic brand;
+  List<Addon> addons;
+  List<ProductOption> productOptions;
+  List<ProductImage> productImages;
+  List<dynamic> unitQuantities;
+  List<Category> categories;
+  Unit unit;
+  List<dynamic> complementaryProducts;
+  double? taxCalc;
+  double? totalPrice;
+  double? priceTaxed;
+  List<int?> cates;
 
   Datum({
     required this.id,
@@ -246,10 +251,11 @@ class Datum {
         shortDescriptionLanguage: json["short_description_language"],
         description: json["description"],
         descriptionLanguage: json["description_language"],
-        price: json["price"]?.toDouble(),
+        price: json["price"] != null ? json["price"].toDouble() : null,
         wp1: json["wp_1"],
-        wp2: json["wp_2"]?.toDouble(),
-        offerPrice: json["offer_price"]?.toDouble(),
+        wp2: json["wp_2"] != null ? json["wp_2"].toDouble() : null,
+        offerPrice:
+            json["offer_price"] != null ? json["offer_price"].toDouble() : null,
         offerLabel: json["offer_label"],
         offerLabelLanguage: json["offer_label_language"],
         priceNote: json["price_note"],
@@ -261,7 +267,7 @@ class Datum {
         barcode: json["barcode"],
         sequence: json["sequence"],
         deliveryCharge: json["delivery_charge"],
-        deliveryChargeType: typeValues.map[json["delivery_charge_type"]]!,
+        deliveryChargeType: typeValues.map[json["delivery_charge_type"]],
         inventoryStock: json["inventory_stock"],
         tax: json["tax"],
         hidePrice: json["hide_price"],
@@ -296,10 +302,12 @@ class Datum {
         unit: Unit.fromJson(json["unit"]),
         complementaryProducts:
             List<dynamic>.from(json["complementary_products"].map((x) => x)),
-        taxCalc: json["tax_calc"]?.toDouble(),
-        totalPrice: json["total_price"]?.toDouble(),
-        priceTaxed: json["price_taxed"]?.toDouble(),
-        cates: List<int>.from(json["cates"].map((x) => x)),
+        taxCalc: json["tax_calc"] != null ? json["tax_calc"].toDouble() : null,
+        totalPrice:
+            json["total_price"] != null ? json["total_price"].toDouble() : null,
+        priceTaxed:
+            json["price_taxed"] != null ? json["price_taxed"].toDouble() : null,
+        cates: List<int?>.from(json["cates"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
@@ -343,7 +351,8 @@ class Datum {
         "consider_price": considerPrice,
         "is_service": isService,
         "settings": settings.toJson(),
-        "filter_properties": List<dynamic>.from(filterProperties.map((x) => x)),
+        "filter_properties":
+            List<dynamic>.from(filterProperties!.map((x) => x)),
         "is_combo": isCombo,
         "has_complementary": hasComplementary,
         "max_complementary_qty": maxComplementaryQty,
@@ -376,18 +385,18 @@ class Datum {
 }
 
 class Addon {
-  final int id;
-  final int storeId;
-  final String name;
-  final ShortDescriptionLanguageClass nameLanguage;
-  final double price;
-  final Type quantityType;
-  final int active;
-  final DateTime createdAt;
-  final DateTime updatedAt;
-  final AddonPivot pivot;
-  final double taxCalc;
-  final double totalPrice;
+  int? id;
+  int? storeId;
+  String? name;
+  ShortDescriptionLanguageClass nameLanguage;
+  double? price;
+  Type? quantityType;
+  int? active;
+  DateTime createdAt;
+  DateTime updatedAt;
+  AddonPivot pivot;
+  double? taxCalc;
+  double? totalPrice;
 
   Addon({
     required this.id,
@@ -410,14 +419,15 @@ class Addon {
         name: json["name"],
         nameLanguage:
             ShortDescriptionLanguageClass.fromJson(json["name_language"]),
-        price: json["price"]?.toDouble(),
-        quantityType: typeValues.map[json["quantity_type"]]!,
+        price: json["price"] != null ? json["price"].toDouble() : null,
+        quantityType: typeValues.map[json["quantity_type"]],
         active: json["active"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
         pivot: AddonPivot.fromJson(json["pivot"]),
-        taxCalc: json["tax_calc"]?.toDouble(),
-        totalPrice: json["total_price"]?.toDouble(),
+        taxCalc: json["tax_calc"] != null ? json["tax_calc"].toDouble() : null,
+        totalPrice:
+            json["total_price"] != null ? json["total_price"].toDouble() : null,
       );
 
   Map<String, dynamic> toJson() => {
@@ -437,7 +447,7 @@ class Addon {
 }
 
 class ShortDescriptionLanguageClass {
-  final Ml ml;
+  Ml? ml;
 
   ShortDescriptionLanguageClass({
     required this.ml,
@@ -445,10 +455,10 @@ class ShortDescriptionLanguageClass {
 
   factory ShortDescriptionLanguageClass.fromJson(Map<String, dynamic> json) =>
       ShortDescriptionLanguageClass(
-        ml: mlValues.map[json["Ml"]]!,
+        ml: mlValues.map[json["Ml"]],
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String?, dynamic> toJson() => {
         "Ml": mlValues.reverse[ml],
       };
 }
@@ -458,12 +468,12 @@ enum Ml { EMPTY }
 final mlValues = EnumValues({"വിശദാംശങ്ങൾ": Ml.EMPTY});
 
 class AddonPivot {
-  final int productId;
-  final int addonId;
-  final double price;
-  final int selectedDefault;
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  int? productId;
+  int? addonId;
+  double? price;
+  int? selectedDefault;
+  DateTime createdAt;
+  DateTime updatedAt;
 
   AddonPivot({
     required this.productId,
@@ -477,7 +487,7 @@ class AddonPivot {
   factory AddonPivot.fromJson(Map<String, dynamic> json) => AddonPivot(
         productId: json["product_id"],
         addonId: json["addon_id"],
-        price: json["price"]?.toDouble(),
+        price: json["price"] != null ? json["price"].toDouble() : null,
         selectedDefault: json["selected_default"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
@@ -498,22 +508,22 @@ enum Type { FLEXIBLE, FIXED }
 final typeValues = EnumValues({"fixed": Type.FIXED, "flexible": Type.FLEXIBLE});
 
 class Category {
-  final int id;
-  final int storeId;
-  final dynamic subStoreId;
-  final int parentId;
-  final String name;
-  final dynamic nameLanguage;
-  final String image;
-  final int sequence;
-  final String timeFrom;
-  final String timeTo;
-  final List<dynamic> filterProperties;
-  final int level;
-  final int active;
-  final DateTime createdAt;
-  final DateTime updatedAt;
-  final CategoryPivot pivot;
+  int? id;
+  int? storeId;
+  dynamic subStoreId;
+  int? parentId;
+  String? name;
+  dynamic nameLanguage;
+  String? image;
+  int? sequence;
+  String? timeFrom;
+  String? timeTo;
+  List<dynamic> filterProperties;
+  int? level;
+  int? active;
+  DateTime createdAt;
+  DateTime updatedAt;
+  CategoryPivot pivot;
 
   Category({
     required this.id,
@@ -575,8 +585,8 @@ class Category {
 }
 
 class DescriptionLanguageClass {
-  final String ml;
-  final String ar;
+  String? ml;
+  String? ar;
 
   DescriptionLanguageClass({
     required this.ml,
@@ -596,15 +606,15 @@ class DescriptionLanguageClass {
 }
 
 class CategoryPivot {
-  final int productId;
-  final int categoryId;
+  int? productId;
+  int? categoryId;
 
   CategoryPivot({
     required this.productId,
     required this.categoryId,
   });
 
-  factory CategoryPivot.fromJson(Map<String, dynamic> json) => CategoryPivot(
+  factory CategoryPivot.fromJson(Map<String?, dynamic> json) => CategoryPivot(
         productId: json["product_id"],
         categoryId: json["category_id"],
       );
@@ -616,12 +626,12 @@ class CategoryPivot {
 }
 
 class ProductImage {
-  final int id;
-  final int productId;
-  final String image;
-  final int sequence;
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  int? id;
+  int? productId;
+  String? image;
+  int? sequence;
+  DateTime createdAt;
+  DateTime updatedAt;
 
   ProductImage({
     required this.id,
@@ -652,20 +662,20 @@ class ProductImage {
 }
 
 class ProductOption {
-  final int id;
-  final int productId;
-  final String name;
-  final DescriptionLanguageClass nameLanguage;
-  final double price;
-  final int offerPrice;
-  final int wp1;
-  final int wp2;
-  final int selectedDefault;
-  final DateTime createdAt;
-  final DateTime updatedAt;
-  final double taxCalc;
-  final double priceTaxed;
-  final double totalPrice;
+  int? id;
+  int? productId;
+  String? name;
+  DescriptionLanguageClass nameLanguage;
+  double? price;
+  int? offerPrice;
+  int? wp1;
+  int? wp2;
+  int? selectedDefault;
+  DateTime createdAt;
+  DateTime updatedAt;
+  double? taxCalc;
+  double? priceTaxed;
+  double? totalPrice;
 
   ProductOption({
     required this.id,
@@ -689,16 +699,18 @@ class ProductOption {
         productId: json["product_id"],
         name: json["name"],
         nameLanguage: DescriptionLanguageClass.fromJson(json["name_language"]),
-        price: json["price"]?.toDouble(),
+        price: json["price"] != null ? json["price"].toDouble() : null,
         offerPrice: json["offer_price"],
         wp1: json["wp_1"],
         wp2: json["wp_2"],
         selectedDefault: json["selected_default"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
-        taxCalc: json["tax_calc"]?.toDouble(),
-        priceTaxed: json["price_taxed"]?.toDouble(),
-        totalPrice: json["total_price"]?.toDouble(),
+        taxCalc: json["tax_calc"] != null ? json["tax_calc"].toDouble() : null,
+        priceTaxed:
+            json["price_taxed"] != null ? json["price_taxed"].toDouble() : null,
+        totalPrice:
+            json["total_price"] != null ? json["total_price"].toDouble() : null,
       );
 
   Map<String, dynamic> toJson() => {
@@ -720,7 +732,7 @@ class ProductOption {
 }
 
 class Settings {
-  final int bulkQtyAvailable;
+  int? bulkQtyAvailable;
 
   Settings({
     required this.bulkQtyAvailable,
@@ -736,16 +748,16 @@ class Settings {
 }
 
 class Unit {
-  final int id;
-  final int storeId;
-  final Name name;
-  final ShortForm shortForm;
-  final ShortFormLanguage shortFormLanguage;
-  final TypeEnum type;
-  final int active;
-  final DateTime createdAt;
-  final DateTime updatedAt;
-  final int selectedDefault;
+  int? id;
+  int? storeId;
+  Name? name;
+  ShortForm? shortForm;
+  ShortFormLanguage shortFormLanguage;
+  TypeEnum? type;
+  int? active;
+  DateTime createdAt;
+  DateTime updatedAt;
+  int? selectedDefault;
 
   Unit({
     required this.id,
@@ -763,11 +775,13 @@ class Unit {
   factory Unit.fromJson(Map<String, dynamic> json) => Unit(
         id: json["id"],
         storeId: json["store_id"],
-        name: nameValues.map[json["name"]]!,
-        shortForm: shortFormValues.map[json["short_form"]]!,
+        name: nameValues != null ? nameValues.map[json["name"]] : null,
+        shortForm: shortFormValues != null
+            ? shortFormValues.map[json["short_form"]]
+            : null,
         shortFormLanguage:
             ShortFormLanguage.fromJson(json["short_form_language"]),
-        type: typeEnumValues.map[json["type"]]!,
+        type: typeEnumValues != null ? typeEnumValues.map[json["type"]] : null,
         active: json["active"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
@@ -807,7 +821,7 @@ final shortFormValues = EnumValues({
 });
 
 class ShortFormLanguage {
-  final dynamic ar;
+  dynamic ar;
 
   ShortFormLanguage({
     required this.ar,
@@ -832,9 +846,9 @@ final typeEnumValues = EnumValues({
 });
 
 class Link {
-  final String url;
-  final String label;
-  final bool active;
+  String? url;
+  String? label;
+  bool active;
 
   Link({
     required this.url,
@@ -857,11 +871,11 @@ class Link {
 
 class EnumValues<T> {
   Map<String, T> map;
-  late Map<T, String> reverseMap;
+  late Map<T, String?> reverseMap;
 
   EnumValues(this.map);
 
-  Map<T, String> get reverse {
+  Map<T, String?> get reverse {
     reverseMap = map.map((k, v) => MapEntry(v, k));
     return reverseMap;
   }

@@ -5,7 +5,7 @@ import '../feature/product.dart';
 
 class Routes {
   static final routes = [
-    GetPage(name: '/product', page: () => const ProductPage()),
+    GetPage(name: '/product', page: () => ProductPage()),
     GetPage(name: '/', page: () => const MyHomePage()),
   ];
 }

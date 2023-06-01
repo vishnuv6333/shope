@@ -3,14 +3,14 @@ import 'package:http/http.dart' as http;
 
 import '../const/baseurl.dart';
 
-class LoginService {
-  static Future<dynamic> login(email, password) async {
-    var response = await http.post(
-        Uri.parse(
-          ServerAdrs().baseUrl + 'login',
-        ),
-        headers: {'Accept': 'application/json'},
-        body: {"username": email, "password": password, "store_id": 10});
+class ProductService {
+  Future<dynamic> getProduct() async {
+    var response = await http.get(
+      Uri.parse(
+        ServerAdrs().baseUrl + 'add-to-cart',
+      ),
+      headers: {'Accept': 'application/json'},
+    );
     return response;
   }
 }
